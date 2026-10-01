@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MopaPay.com — Trade • Pay • Grow</title>
+  <meta name="description" content="MopaPay.com — a modern marketplace, wallet and payments platform.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" data-route="home">
+      <span class="brand-mark">M</span>
+      <span><b>MopaPay.com</b> <em>Hub</em><small>Shop • Pay • Sell</small></span>
+    </a>
+    <nav>
+      <a href="#home" data-route="home">Home</a>
+      <a href="#marketplace" data-route="marketplace">Marketplace</a>
+      <a href="#about" data-route="about">About</a>
+      <a href="#contact" data-route="contact">Contact</a>
+    </nav>
+    <div class="nav-actions" id="navActions">
+      <button class="btn ghost" data-open="login">Login</button>
+      <button class="btn primary" data-open="register">Register</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero wrap">
+        <div class="hero-copy">
+          <span class="eyebrow">MopaPay.com Marketplace</span>
+          <h1>Shop smarter. <span>Sell faster.</span> Pay with MopaPay.com.</h1>
+          <p>Discover products and services, compare offers, add items to your cart, and manage orders from one simple marketplace.</p>
+          <div class="hero-actions">
+            <button class="btn primary xl" data-open="register">Get Started →</button>
+            <a class="btn ghost xl" href="#about">Learn More</a>
+          </div>
+          <div class="trust-row">
+            <span>✓ Secure checkout</span><span>✓ Seller marketplace</span><span>✓ Mobile ready</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="phone">
+            <div class="phone-top"><span>9:41</span><span>•••</span></div>
+            <div class="phone-title">MopaPay.com <b>Hub</b></div>
+            <div class="balance-card"><small>Available balance</small><strong id="heroBalance">$0.00</strong><span>Sign in to view your real balance</span></div>
+            <div class="quick-grid">
+              <button data-open="login">Send</button><button data-open="login">Receive</button>
+              <button data-route="marketplace">Buy</button><button data-route="marketplace">Sell</button>
+            </div>
+            <div class="mini-item">Marketplace <span>›</span></div>
+            <div class="mini-item">Transactions <span>›</span></div>
+            <div class="mini-item">Profile & security <span>›</span></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section wrap">
+        <div class="section-head"><span class="eyebrow">Why MopaPay.com</span><h2>Everything you need to shop online</h2><p>Browse, search, compare and buy from a marketplace built for everyday users and sellers.</p></div>
+        <div class="feature-grid">
+          <article><div class="icon">🔎</div><h3>Smart search</h3><p>Find products quickly with keyword search and category filters.</p></article>
+          <article><div class="icon">🛒</div><h3>Shopping cart</h3><p>Add products to your cart, adjust quantities and review your order before checkout.</p></article>
+          <article><div class="icon">📦</div><h3>Orders</h3><p>Keep your purchases organized and follow order status from your account.</p></article>
+          <article><div class="icon">⭐</div><h3>Reviews</h3><p>Give sellers and products useful feedback after your purchase.</p></article>
+          <article><div class="icon">💳</div><h3>Simple checkout</h3><p>Review your cart, delivery details and payment option in one flow.</p></article>
+          <article><div class="icon">🏪</div><h3>Seller tools</h3><p>Publish listings, manage inventory and keep your marketplace activity organized.</p></article>
+        </div>
+      </section>
+
+      <section class="section tinted">
+        <div class="wrap">
+          <div class="section-head left"><span class="eyebrow">Plans</span><h2>Choose how you want to use the platform</h2><p>Prices are controlled from the admin side and are not hard-coded into the interface.</p></div>
+          <div id="plans" class="plan-grid"></div>
+        </div>
+      </section>
+      <section class="section wrap">
+        <div class="cta"><div><span class="eyebrow">Ready</span><h2>Create your account</h2><p>Register, verify the security check and enter your dashboard.</p></div><button class="btn primary xl" data-open="register">Create Account →</button></div>
+      </section>
+    </section>
+
+    <section id="marketplace" class="page">
+      <div class="wrap page-head"><span class="eyebrow">MopaPay.com Marketplace</span><h1>Discover products & services</h1><p>Search by product, browse categories, compare listings and add items to your cart.</p></div>
+      <div class="wrap category-strip"><button class="category-pill active" data-cat="">All</button><button class="category-pill" data-cat="Electronics">Electronics</button><button class="category-pill" data-cat="Fashion">Fashion</button><button class="category-pill" data-cat="Home">Home</button><button class="category-pill" data-cat="Beauty">Beauty</button><button class="category-pill" data-cat="Services">Services</button><button class="category-pill" data-cat="Digital">Digital</button></div>
+      <div class="wrap toolbar"><input id="marketSearch" placeholder="Search products, brands and services…"><select id="marketSort"><option value="featured">Featured</option><option value="price-low">Price: Low to high</option><option value="price-high">Price: High to low</option><option value="newest">Newest</option></select><button class="btn ghost" id="cartBtn">🛒 Cart <span id="cartCount">0</span></button></div>
+      <div id="marketGrid" class="wrap market-grid"></div>
+    </section>
+
+    <section id="cart" class="page">
+      <div class="wrap page-head"><span class="eyebrow">Shopping cart</span><h1>Your cart</h1><p>Review selected items before checkout.</p></div>
+      <div class="wrap cart-layout"><div id="cartItems" class="panel"></div><aside class="panel cart-summary"><h3>Order summary</h3><div class="summary-row"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><div class="summary-row"><span>Delivery</span><strong id="cartDelivery">$0.00</strong></div><div class="summary-row total"><span>Total</span><strong id="cartTotal">$0.00</strong></div><button class="btn primary xl" id="checkoutBtn">Proceed to checkout</button></aside></div>
+    </section>
+
+    <section id="about" class="page">
+      <div class="wrap page-head"><span class="eyebrow">About</span><h1>Built around control, transparency and security.</h1><p>MopaPay.com is designed as a full-stack Cloudflare application: browser interface + server functions + D1 database.</p></div>
+      <div class="wrap about-grid">
+        <article><h3>Server-side data</h3><p>Balances, transactions, subscriptions and permissions are not trusted from browser code.</p></article>
+        <article><h3>Admin ownership</h3><p>The admin area is separated from normal users and important actions are logged.</p></article>
+        <article><h3>Expandable</h3><p>Payment providers, email, SMS, KYC and other integrations can be added without redesigning the whole interface.</p></article>
+      </div>
+    </section>
+
+    <section id="contact" class="page">
+      <div class="wrap page-head"><span class="eyebrow">Contact</span><h1>Send us a message</h1><p>Messages are stored in the database for admin review.</p></div>
+      <form id="contactForm" class="form-card wrap narrow">
+        <label>Name<input name="name" required maxlength="80"></label>
+        <label>Email<input name="email" type="email" required maxlength="160"></label>
+        <label>Message<textarea name="message" required maxlength="2000"></textarea></label>
+                <button class="btn primary" type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section id="dashboard" class="page private">
+      <div class="wrap page-head"><span class="eyebrow">Your account</span><h1>Dashboard</h1><p id="dashGreeting"></p></div>
+      <div class="wrap stat-grid">
+        <div class="stat"><small>Available balance</small><strong id="dashBalance">$0.00</strong></div>
+        <div class="stat"><small>Subscription</small><strong id="dashPlan">None</strong></div>
+        <div class="stat"><small>Account</small><strong id="dashStatus">Active</strong></div>
+      </div>
+      <div class="wrap dashboard-grid">
+        <article class="panel"><div class="panel-head"><h3>Quick actions</h3></div><div class="quick-actions">
+          <button data-route="wallet">Wallet</button><button data-route="transactions">Transactions</button><button data-route="marketplace">Marketplace</button><button data-route="profile">Profile</button>
+        </div></article>
+        <article class="panel"><div class="panel-head"><h3>Recent transactions</h3><button class="link-btn" data-route="transactions">View all</button></div><div id="recentTx"></div></article>
+      </div>
+    </section>
+
+    <section id="wallet" class="page private">
+      <div class="wrap page-head"><span class="eyebrow">Wallet</span><h1>Your wallet</h1><p>Wallet actions are processed by the server and recorded in the USD ledger.</p></div>
+      <div class="wrap wallet-grid">
+        <div class="wallet-card"><small>Available balance</small><strong id="walletBalance">$0.00</strong><p>Currency: USD</p></div>
+        <form id="walletRequestForm" class="form-card">
+          <h3>Request a wallet action</h3>
+          <label>Type<select name="type"><option value="deposit">Deposit request</option><option value="withdrawal">Withdrawal request</option></select></label>
+          <label>Amount<input name="amount" type="number" min="0.01" step="0.01" required></label>
+          <label>Note<textarea name="note" maxlength="500"></textarea></label>
+                    <button class="btn primary">Submit request</button><button type="button" class="btn ghost" id="depositBtn">Pay online to deposit</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="transactions" class="page private">
+      <div class="wrap page-head"><span class="eyebrow">Ledger</span><h1>Transactions</h1><p>Your server-recorded account history.</p></div>
+      <div class="wrap panel"><div id="txTable"></div></div>
+    </section>
+
+    <section id="profile" class="page private">
+      <div class="wrap page-head"><span class="eyebrow">Profile</span><h1>Profile & security</h1><p>Update your profile information and sign out.</p></div>
+      <form id="profileForm" class="form-card wrap narrow">
+        <label>Full name<input name="name" id="profileName" required maxlength="100"></label>
+        <label>Email<input name="email" id="profileEmail" disabled></label>
+        <button class="btn primary">Save profile</button>
+        <button type="button" class="btn danger" id="logoutBtn">Log out</button>
+      </form>
+    </section>
+
+    <section id="admin" class="page private admin-only">
+      <div class="wrap page-head"><span class="eyebrow">Administrator</span><h1>Control center</h1><p>Admin-only tools. Every sensitive change is recorded.</p></div>
+      <div class="wrap admin-grid">
+        <article class="panel"><div class="panel-head"><h3>Users</h3></div><div id="adminUsers"></div></article>
+        <article class="panel"><div class="panel-head"><h3>Subscriptions</h3></div><div id="adminSubs"></div></article>
+        <article class="panel"><div class="panel-head"><h3>Wallet requests</h3></div><div id="adminWallets"></div></article>
+        <article class="panel"><div class="panel-head"><h3>Create listing</h3></div>
+          <form id="listingForm" class="compact-form">
+            <label>Title<input name="title" required maxlength="120"></label>
+            <label>Category<select name="category"><option>Digital</option><option>Services</option><option>Data</option><option>Other</option></select></label>
+            <label>Price<input name="price" type="number" min="0" step="0.01" required></label>
+            <label>Description<textarea name="description" required maxlength="1000"></textarea></label>
+            <button class="btn primary">Publish listing</button>
+          </form>
+        </article>
+        <article class="panel"><div class="panel-head"><h3>Audit log</h3></div><div id="adminAudit"></div></article>
+      </div>
+    </section>
+  </main>
+    <div id="productModal" class="modal" aria-hidden="true"><div class="modal-card product-modal"><button class="modal-close" data-close="product">×</button><div id="productDetail"></div></div></div>
+
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div><div class="brand"><span class="brand-mark">M</span><span><b>MopaPay.com</b> <em>Hub</em><small>Shop • Pay • Sell</small></span></div><p>Secure marketplace and account platform.</p></div>
+      <div><h4>Explore</h4><a href="#marketplace">Marketplace</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+      <div><h4>Account</h4><a href="#dashboard">Dashboard</a><a href="#profile">Profile</a><a href="#transactions">Transactions</a></div>
+      <div><h4>Support</h4><a href="#contact">Help</a><a href="#">Terms</a><a href="#">Privacy</a></div>
+    </div>
+    <div class="wrap copyright">© <span id="year"></span> MopaPay.com. All rights reserved.</div>
+  </footer>
+
+  <div class="modal" id="loginModal" aria-hidden="true"><div class="modal-card">
+    <button class="modal-close" data-close="login">×</button><h2>Welcome back</h2><p>Sign in to your account.</p>
+    <form id="loginForm"><label>Email<input name="email" type="email" required></label><label>Password<input name="password" type="password" required minlength="8"></label><button class="btn primary">Login</button></form>
+  </div></div>
+
+  <div class="modal" id="registerModal" aria-hidden="true"><div class="modal-card">
+    <button class="modal-close" data-close="register">×</button><h2>Create your account</h2><p>Your account is stored securely on the server.</p>
+    <form id="registerForm"><label>Full name<input name="name" required maxlength="100"></label><label>Email<input name="email" type="email" required maxlength="160"></label><label>Password<input name="password" type="password" required minlength="8"></label><button class="btn primary">Create Account</button></form>
+  </div></div>
+
+
+<script src="/app.js"></script>
+</body>
+</html>
